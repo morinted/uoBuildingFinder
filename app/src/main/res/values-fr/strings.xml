@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CarteUO</string>
+    <string name="title_activity_maps">CarteUO</string>
+    <string name="action_search">Recherche</string>
+
+
+    <string name="name_3">
+52 University
+</string>
+
+<string name="address_30">
+52 University
+</string>
+
+<string name="URL_3">
+
+</string>
+
+<string name="name_55">
+600 Peter Morand
+</string>
+
+<string name="address_550">
+600 Peter Morand
+</string>
+
+<string name="URL_55">
+
+</string>
+
+<string name="name_56">
+850 Peter Morand
+</string>
+
+<string name="address_560">
+850 Peter Morand
+</string>
+
+<string name="URL_56">
+
+</string>
+
+<string name="name_164">
+109 Osgoode
+</string>
+
+<string name="address_1640">
+109 Rue Osgoode
+</string>
+
+<string name="URL_164">
+
+</string>
+
+<string name="name_226">
+603 King Edward
+</string>
+
+<string name="address_2260">
+603 King Edward
+</string>
+
+<string name="URL_226">
+
+</string>
+
+<string name="name_227">
+621 King Edward
+</string>
+
+<string name="address_2270">
+621 King Edward
+</string>
+
+<string name="URL_227">
+
+</string>
+
+<string name="name_240">
+1 Stewart
+</string>
+
+<string name="address_2400">
+1 Stewart
+</string>
+
+<string name="URL_240">
+
+</string>
+
+<string name="name_242">
+34/36 Stewart
+</string>
+
+<string name="address_2420">
+34 Stewart
+</string>
+
+<string name="address_2421">
+36 Stewart
+</string>
+
+<string name="URL_242">
+
+</string>
+
+<string name="name_243">
+38 Stewart
+</string>
+
+<string name="address_2430">
+38 Stewart
+</string>
+
+<string name="URL_243">
+
+</string>
+
+<string name="name_244">
+40 Stewart
+</string>
+
+<string name="address_2440">
+40 Stewart
+</string>
+
+<string name="URL_244">
+
+</string>
+
+<string name="name_275">
+15/17 Copernicus
+</string>
+
+<string name="address_2750">
+15 Copernicus
+</string>
+
+<string name="address_2751">
+17 Copernicus
+</string>
+
+<string name="URL_275">
+
+</string>
+
+<string name="name_STT">
+30/32 Stewart
+</string>
+
+<string name="address_STT0">
+30 Stewart
+</string>
+
+<string name="address_STT1">
+32 Stewart
+</string>
+
+<string name="URL_STT">
+
+</string>
+
+<string name="name_LRR">
+100 Laurier Est
+</string>
+
+<string name="address_LRR0">
+100 Laurier
+</string>
+
+<string name="URL_LRR">
+
+</string>
+
+<string name="name_MCE">
+100 Marie-Curie
+</string>
+
+<string name="address_MCE0">
+100 Marie Curie
+</string>
+
+<string name="URL_MCE">
+http://uottawa.ca/cartes/edifice/100marie-curie.html
+</string>
+
+<string name="name_LPR">
+Louis-Pasteur
+</string>
+
+<string name="address_LPR0">
+129 Louis Pasteur
+</string>
+
+<string name="address_LPR1">
+139 Louis Pasteur
+</string>
+
+<string name="address_LPR2">
+141 Louis Pasteur
+</string>
+
+<string name="URL_LPR">
+
+</string>
+
+<string name="name_LR3">
+190 Laurier Est
+</string>
+
+<string name="address_LR30">
+190 Laurier
+</string>
+
+<string name="URL_LR3">
+
+</string>
+
+<string name="name_JLR">
+Pavillon Jules-Leger
+</string>
+
+<string name="address_JLR0">
+200 Rue Wilbrod
+</string>
+
+<string name="URL_JLR">
+http://uottawa.ca/cartes/edifice/wilbrod.html
+</string>
+
+<string name="name_GSD">
+Maison des ├âÔÇ░tudiants Dipl├â┬┤mes
+</string>
+
+<string name="address_GSD0">
+601 Rue Cumberland
+</string>
+
+<string name="URL_GSD">
+
+</string>
+
+<string name="name_ART">
+Pavillon des arts
+</string>
+
+<string name="address_ART0">
+70 Laurier
+</string>
+
+<string name="URL_ART">
+http://uottawa.ca/cartes/edifice/arts.html
+</string>
+
+<string name="name_BSC">
+Biosciences (Complexe des biosciences- Phase 2)
+</string>
+
+<string name="address_BSC0">
+30 Marie Curie
+</string>
+
+<string name="URL_BSC">
+http://uottawa.ca/cartes/edifice/bioscience.html
+</string>
+
+<string name="name_BRS1">
+Complexe r├â┬®sidentiel Brooks
+</string>
+
+<string name="address_BRS10">
+638 King Edward
+</string>
+
+<string name="URL_BRS1">
+http://uottawa.ca/cartes/edifice/brooks.html
+</string>
+
+<string name="name_BRS2">
+Complexe r├â┬®sidentiel Brooks
+</string>
+
+<string name="address_BRS20">
+95 Marie Curie
+</string>
+
+<string name="URL_BRS2">
+http://uottawa.ca/cartes/edifice/brooks.html
+</string>
+
+<string name="name_BRS3">
+Complexe r├â┬®sidentiel Brooks
+</string>
+
+<string name="address_BRS30">
+85 Marie Curie
+</string>
+
+<string name="URL_BRS3">
+http://uottawa.ca/cartes/edifice/brooks.html
+</string>
+
+<string name="name_BRS4">
+Complexe r├â┬®sidentiel Brooks
+</string>
+
+<string name="address_BRS40">
+636 King Edward
+</string>
+
+<string name="URL_BRS4">
+http://uottawa.ca/cartes/edifice/brooks.html
+</string>
+
+<string name="name_BRS5">
+Complexe r├â┬®sidentiel Brooks
+</string>
+
+<string name="address_BRS50">
+634 King Edward
+</string>
+
+<string name="URL_BRS5">
+http://uottawa.ca/cartes/edifice/brooks.html
+</string>
+
+<string name="name_BRS6">
+Complexe r├â┬®sidentiel Brooks
+</string>
+
+<string name="address_BRS60">
+632 King Edward
+</string>
+
+<string name="URL_BRS6">
+http://uottawa.ca/cartes/edifice/brooks.html
+</string>
+
+<string name="name_KE2">
+542 King Edward
+</string>
+
+<string name="address_KE20">
+542 King Edward
+</string>
+
+<string name="URL_KE2">
+http://uottawa.ca/cartes/edifice/kingedward.html
+</string>
+
+<string name="name_CRG">
+CAREG (Complexe des biosciences - Phase 1)
+</string>
+
+<string name="address_CRG0">
+20 Marie Curie
+</string>
+
+<string name="URL_CRG">
+http://uottawa.ca/cartes/edifice/bioscience.html
+</string>
+
+<string name="name_KE6">
+559 King Edward
+</string>
+
+<string name="address_KE60">
+559 King Edward
+</string>
+
+<string name="URL_KE6">
+http://uottawa.ca/cartes/edifice/kingedward.html
+</string>
+
+<string name="name_CBY">
+Pavillon Colonel By
+</string>
+
+<string name="address_CBY0">
+161 Louis Pasteur
+</string>
+
+<string name="URL_CBY">
+http://uottawa.ca/cartes/edifice/colonelby.html
+</string>
+
+<string name="name_CBE">
+Le Cube
+</string>
+
+<string name="address_CBE0">
+160 Louis Pasteur
+</string>
+
+<string name="URL_CBE">
+
+</string>
+
+<string name="name_DRO">
+Pavillon D\'Iorio
+</string>
+
+<string name="address_DRO0">
+10 Marie Curie
+</string>
+
+<string name="URL_DRO">
+http://uottawa.ca/cartes/edifice/diorio.html
+</string>
+
+<string name="name_KED">
+585 King Edward
+</string>
+
+<string name="address_KED0">
+585 King Edward
+</string>
+
+<string name="URL_KED">
+http://uottawa.ca/cartes/edifice/kingedward.html
+</string>
+
+<string name="name_DMS">
+Pavillon Desmarais
+</string>
+
+<string name="address_DMS0">
+55 Laurier
+</string>
+
+<string name="URL_DMS">
+http://uottawa.ca/cartes/edifice/desmarais.html
+</string>
+
+<string name="name_EMBA">
+Programme MBA
+</string>
+
+<string name="address_EMBA0">
+World Exchange Plaza, 45 Rue O\'Connor
+</string>
+
+<string name="URL_EMBA">
+
+</string>
+
+<string name="name_FTX">
+Pavillon Fauteux
+</string>
+
+<string name="address_FTX0">
+57 Louis Pasteur
+</string>
+
+<string name="URL_FTX">
+http://uottawa.ca/cartes/edifice/fauteux.html
+</string>
+
+<string name="name_GNN">
+Pavillon Gendron
+</string>
+
+<string name="address_GNN0">
+30 Marie Curie
+</string>
+
+<string name="URL_GNN">
+http://uottawa.ca/cartes/edifice/bioscience.html
+</string>
+
+<string name="name_RGN">
+Pavillon Roger Guindon
+</string>
+
+<string name="address_RGN0">
+451 Rue Smyth
+</string>
+
+<string name="URL_RGN">
+http://uottawa.ca/cartes/edifice/rgn.html
+</string>
+
+<string name="name_HGN">
+Pavillon Hagen
+</string>
+
+<string name="address_HGN0">
+115 Seraphin Marion
+</string>
+
+<string name="URL_HGN">
+http://uottawa.ca/cartes/edifice/hagen.html
+</string>
+
+<string name="name_HSY">
+R├â┬®sidence Hyman-Soloway
+</string>
+
+<string name="address_HSY0">
+157 Laurier
+</string>
+
+<string name="URL_HSY">
+http://uottawa.ca/cartes/edifice/hymansoloway.html
+</string>
+
+<string name="name_KE3">
+555 King Edward
+</string>
+
+<string name="address_KE30">
+555 King Edward
+</string>
+
+<string name="URL_KE3">
+
+</string>
+
+<string name="name_SM3">
+143 Seraphin Marion
+</string>
+
+<string name="address_SM30">
+143 Seraphin Marion
+</string>
+
+<string name="URL_SM3">
+http://uottawa.ca/cartes/edifice/seraphin-marion.html
+</string>
+
+<string name="name_KE1">
+538/540 King Edward
+</string>
+
+<string name="address_KE10">
+538 King Edward
+</string>
+
+<string name="address_KE11">
+540 King Edward
+</string>
+
+<string name="URL_KE1">
+http://uottawa.ca/cartes/edifice/kingedward.html
+</string>
+
+<string name="name_LMX">
+Pavillon Lamoureux
+</string>
+
+<string name="address_LMX0">
+145 Jean-Jacques Lussier
+</string>
+
+<string name="URL_LMX">
+http://www.uottawa.ca/cartes/edifice/lamoureux.html
+</string>
+
+<string name="name_LBC">
+R├â┬®sidence LeBlanc
+</string>
+
+<string name="address_LBC0">
+45 Louis Pasteur
+</string>
+
+<string name="URL_LBC">
+http://uottawa.ca/cartes/edifice/leblanc.html
+</string>
+
+<string name="name_LEES1">
+200 Lees - A
+</string>
+
+<string name="address_LEES10">
+200 Lees
+</string>
+
+<string name="URL_LEES1">
+http://uottawa.ca/cartes/edifice/lees.html
+</string>
+
+<string name="name_LEES2">
+200 Lees - B
+</string>
+
+<string name="address_LEES20">
+200 Lees
+</string>
+
+<string name="URL_LEES2">
+http://uottawa.ca/cartes/edifice/lees.html
+</string>
+
+<string name="name_LEES3">
+200 Lees - C
+</string>
+
+<string name="address_LEES30">
+200 Lees
+</string>
+
+<string name="URL_LEES3">
+http://uottawa.ca/cartes/edifice/lees.html
+</string>
+
+<string name="name_LEES4">
+200 Lees - D
+</string>
+
+<string name="address_LEES40">
+200 Lees
+</string>
+
+<string name="URL_LEES4">
+http://uottawa.ca/cartes/edifice/lees.html
+</string>
+
+<string name="name_LEES5">
+200 Lees - E
+</string>
+
+<string name="address_LEES50">
+200 Lees
+</string>
+
+<string name="URL_LEES5">
+http://uottawa.ca/cartes/edifice/lees.html
+</string>
+
+<string name="name_MCD">
+Pavillon MacDonald
+</string>
+
+<string name="address_MCD0">
+150 Louis Pasteur
+</string>
+
+<string name="URL_MCD">
+http://uottawa.ca/cartes/edifice/macdonald.html
+</string>
+
+<string name="name_MRD">
+R├â┬®sidence Marchand
+</string>
+
+<string name="address_MRD0">
+90 University
+</string>
+
+<string name="URL_MRD">
+http://www.residence.uottawa.ca/fr/marchand.html
+</string>
+
+<string name="name_AWHC">
+Centre d\'aide a redaction des travaux universitaires
+</string>
+
+<string name="address_AWHC0">
+110 University
+</string>
+
+<string name="URL_AWHC">
+http://www.sass.uottawa.ca/redaction/
+</string>
+
+<string name="name_MRN">
+Pavillon Marion
+</string>
+
+<string name="address_MRN0">
+140 Louis Pasteur
+</string>
+
+<string name="URL_MRN">
+http://uottawa.ca/cartes/edifice/marion.html
+</string>
+
+<string name="name_MNT">
+Pavillon Montpetit
+</string>
+
+<string name="address_MNT0">
+125 University
+</string>
+
+<string name="URL_MNT">
+http://uottawa.ca/cartes/edifice/montpetit.html
+</string>
+
+<string name="name_MRT">
+Pavillon Morisset
+</string>
+
+<string name="address_MRT0">
+65 University
+</string>
+
+<string name="URL_MRT">
+http://uottawa.ca/cartes/edifice/morisset.html
+</string>
+
+<string name="name_RCR">
+90 Universit├â┬®
+</string>
+
+<string name="address_RCR0">
+90 University
+</string>
+
+<string name="URL_RCR">
+http://www.residence.uottawa.ca/fr/90univ.html
+</string>
+
+<string name="name_ARC">
+Centre de recherche avanc├â┬®e
+</string>
+
+<string name="address_ARC0">
+25 Rue Templeton
+</string>
+
+<string name="URL_ARC">
+
+</string>
+
+<string name="name_ODL">
+Maison Odell
+</string>
+
+<string name="address_ODL0">
+180 Rue Waller
+</string>
+
+<string name="URL_ODL">
+
+</string>
+
+<string name="name_KEW">
+600 King Edward
+</string>
+
+<string name="address_KEW0">
+600 King Edward
+</string>
+
+<string name="URL_KEW">
+http://uottawa.ca/cartes/edifice/kingedward.html
+</string>
+
+<string name="name_KEB">
+631 King Edward
+</string>
+
+<string name="address_KEB0">
+631 King Edward
+</string>
+
+<string name="URL_KEB">
+http://uottawa.ca/cartes/edifice/kingedward.html
+</string>
+
+<string name="name_PRZ">
+Pavillon Perez
+</string>
+
+<string name="address_PRZ0">
+50 University
+</string>
+
+<string name="URL_PRZ">
+http://uottawa.ca/cartes/edifice/perez.html
+</string>
+
+<string name="name_STE">
+EITI
+</string>
+
+<string name="address_STE0">
+800 King Edward
+</string>
+
+<string name="URL_STE">
+http://uottawa.ca/cartes/edifice/site.html
+</string>
+
+<string name="name_SMD">
+Pavillon Simard
+</string>
+
+<string name="address_SMD0">
+60 University
+</string>
+
+<string name="URL_SMD">
+http://uottawa.ca/cartes/edifice/simard.html
+</string>
+
+<string name="name_SCS">
+Complexe sportif Minto
+</string>
+
+<string name="address_SCS0">
+801 King Edward
+</string>
+
+<string name="URL_SCS">
+http://uottawa.ca/cartes/edifice/sport.html
+</string>
+
+<string name="name_TBT">
+Pavillon Tabaret
+</string>
+
+<string name="address_TBT0">
+550 Rue Cumberland
+</string>
+
+<string name="URL_TBT">
+http://uottawa.ca/cartes/edifice/tabaret.html
+</string>
+
+<string name="name_SMN">
+Pavillon academic
+</string>
+
+<string name="address_SMN0">
+133 Seraphin Marion
+</string>
+
+<string name="address_SMN1">
+135 Seraphin Marion
+</string>
+
+<string name="URL_SMN">
+http://uottawa.ca/cartes/edifice/academic.html
+</string>
+
+<string name="name_THN">
+R├â┬®sidence Thompson
+</string>
+
+<string name="address_THN0">
+25 University
+</string>
+
+<string name="address_THN1">
+35 University
+</string>
+
+<string name="address_THN2">
+45 University
+</string>
+
+<string name="URL_THN">
+http://uottawa.ca/cartes/edifice/thompson.html
+</string>
+
+<string name="name_STN">
+R├â┬®sidence Stanton
+</string>
+
+<string name="address_STN0">
+90 University
+</string>
+
+<string name="URL_STN">
+http://www.residence.uottawa.ca/fr/stanton.html
+</string>
+
+<string name="name_UCU">
+Centre universitaire
+</string>
+
+<string name="address_UCU0">
+85 University
+</string>
+
+<string name="URL_UCU">
+http://uottawa.ca/cartes/edifice/unicenter.html
+</string>
+
+<string name="name_VNR">
+Pavillon Vanier
+</string>
+
+<string name="address_VNR0">
+136 Jean-Jacques Lussier
+</string>
+
+<string name="URL_VNR">
+http://uottawa.ca/cartes/edifice/vanier.html
+</string>
+
+<string name="name_NCL">
+1 Nicholas
+</string>
+
+<string name="address_NCL0">
+1 Rue Nicholas
+</string>
+
+<string name="URL_NCL">
+
+</string>
+
+<string name="name_POR">
+Portable
+</string>
+
+<string name="address_POR0">
+150 University
+</string>
+
+<string name="URL_POR">
+
+</string>
+
+<string name="name_SCR">
+Sacr├â┬®-Coeur
+</string>
+
+<string name="address_SCR0">
+591 Rue Cumberland
+</string>
+
+<string name="URL_SCR">
+http://sacrecoeurottawa.ca/
+</string>
+
+<string name="name_FSS">
+Pavillion des sciences sociales
+</string>
+
+<string name="address_FSS0">
+120 University
+</string>
+
+<string name="URL_FSS">
+http://uottawa.ca/cartes/edifice/fss.html
+</string>
+
+<string name="name_CTE">
+Centrale thermique
+</string>
+
+<string name="address_CTE0">
+720 King Edward
+</string>
+
+<string name="URL_CTE">
+
+</string>
+
+
+</resources>
