@@ -2,6 +2,7 @@
     <string name="app_name">uoBuilding Finder</string>
     <string name="title_activity_maps">uoBuilding Finder</string>
     <string name="action_search">Search</string>
+    <string name="search_hint">Search buildings</string>
     <string translatable="false" name="code_3">
 3
 </string>
@@ -1210,9 +1211,7 @@ Portable
 SCR
 </string>
 
-<string name="name_SCR">
-Sacr├â┬®-Coeur
-</string>
+<string name="name_SCR">Sacré Coeur Church</string>
 
 <string name="address_SCR0">
 591 Cumberland Street
@@ -1253,6 +1252,10 @@ Power Plant
 <string name="URL_CTE">
 
 </string>
+    <string name="title_activity_search">Search</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>

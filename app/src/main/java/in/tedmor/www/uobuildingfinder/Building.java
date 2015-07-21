@@ -2147,4 +2147,8 @@ public class Building {
                         new LatLng(45.420491967908006, -75.6793400645256))
         ));
     }
+
+        public static void search(String query) {
+                System.out.println(query);
+        }
 }

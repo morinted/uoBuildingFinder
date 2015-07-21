@@ -229,9 +229,7 @@ Pavillon Jules-Leger
 http://uottawa.ca/cartes/edifice/wilbrod.html
 </string>
 
-<string name="name_GSD">
-Maison des ├âÔÇ░tudiants Dipl├â┬┤mes
-</string>
+<string name="name_GSD">Maison des étudiants Diplômes</string>
 
 <string name="address_GSD0">
 601 Rue Cumberland
@@ -265,9 +263,7 @@ Biosciences (Complexe des biosciences- Phase 2)
 http://uottawa.ca/cartes/edifice/bioscience.html
 </string>
 
-<string name="name_BRS1">
-Complexe r├â┬®sidentiel Brooks
-</string>
+<string name="name_BRS1">Complexe résidentiel Brooks</string>
 
 <string name="address_BRS10">
 638 King Edward
@@ -277,9 +273,7 @@ Complexe r├â┬®sidentiel Brooks
 http://uottawa.ca/cartes/edifice/brooks.html
 </string>
 
-<string name="name_BRS2">
-Complexe r├â┬®sidentiel Brooks
-</string>
+<string name="name_BRS2">Complexe résidentiel Brooks</string>
 
 <string name="address_BRS20">
 95 Marie Curie
@@ -289,9 +283,7 @@ Complexe r├â┬®sidentiel Brooks
 http://uottawa.ca/cartes/edifice/brooks.html
 </string>
 
-<string name="name_BRS3">
-Complexe r├â┬®sidentiel Brooks
-</string>
+<string name="name_BRS3">Complexe résidentiel Brooks</string>
 
 <string name="address_BRS30">
 85 Marie Curie
@@ -301,9 +293,7 @@ Complexe r├â┬®sidentiel Brooks
 http://uottawa.ca/cartes/edifice/brooks.html
 </string>
 
-<string name="name_BRS4">
-Complexe r├â┬®sidentiel Brooks
-</string>
+<string name="name_BRS4">Complexe résidentiel Brooks</string>
 
 <string name="address_BRS40">
 636 King Edward
@@ -313,9 +303,7 @@ Complexe r├â┬®sidentiel Brooks
 http://uottawa.ca/cartes/edifice/brooks.html
 </string>
 
-<string name="name_BRS5">
-Complexe r├â┬®sidentiel Brooks
-</string>
+<string name="name_BRS5">Complexe résidentiel Brooks</string>
 
 <string name="address_BRS50">
 634 King Edward
@@ -325,9 +313,7 @@ Complexe r├â┬®sidentiel Brooks
 http://uottawa.ca/cartes/edifice/brooks.html
 </string>
 
-<string name="name_BRS6">
-Complexe r├â┬®sidentiel Brooks
-</string>
+<string name="name_BRS6">Complexe résidentiel Brooks</string>
 
 <string name="address_BRS60">
 632 King Edward
@@ -493,9 +479,7 @@ Pavillon Hagen
 http://uottawa.ca/cartes/edifice/hagen.html
 </string>
 
-<string name="name_HSY">
-R├â┬®sidence Hyman-Soloway
-</string>
+<string name="name_HSY">Résidence Hyman-Soloway</string>
 
 <string name="address_HSY0">
 157 Laurier
@@ -557,9 +541,7 @@ Pavillon Lamoureux
 http://www.uottawa.ca/cartes/edifice/lamoureux.html
 </string>
 
-<string name="name_LBC">
-R├â┬®sidence LeBlanc
-</string>
+<string name="name_LBC">Résidence LeBlanc</string>
 
 <string name="address_LBC0">
 45 Louis Pasteur
@@ -641,9 +623,7 @@ Pavillon MacDonald
 http://uottawa.ca/cartes/edifice/macdonald.html
 </string>
 
-<string name="name_MRD">
-R├â┬®sidence Marchand
-</string>
+<string name="name_MRD">Résidence Marchand</string>
 
 <string name="address_MRD0">
 90 University
@@ -701,9 +681,7 @@ Pavillon Morisset
 http://uottawa.ca/cartes/edifice/morisset.html
 </string>
 
-<string name="name_RCR">
-90 Universit├â┬®
-</string>
+<string name="name_RCR">90 Université</string>
 
 <string name="address_RCR0">
 90 University
@@ -713,9 +691,7 @@ http://uottawa.ca/cartes/edifice/morisset.html
 http://www.residence.uottawa.ca/fr/90univ.html
 </string>
 
-<string name="name_ARC">
-Centre de recherche avanc├â┬®e
-</string>
+<string name="name_ARC">Centre de recherche avancée</string>
 
 <string name="address_ARC0">
 25 Rue Templeton
@@ -837,9 +813,7 @@ Pavillon academic
 http://uottawa.ca/cartes/edifice/academic.html
 </string>
 
-<string name="name_THN">
-R├â┬®sidence Thompson
-</string>
+<string name="name_THN">Résidence Thompson</string>
 
 <string name="address_THN0">
 25 University
@@ -857,9 +831,7 @@ R├â┬®sidence Thompson
 http://uottawa.ca/cartes/edifice/thompson.html
 </string>
 
-<string name="name_STN">
-R├â┬®sidence Stanton
-</string>
+<string name="name_STN">Résidence Stanton</string>
 
 <string name="address_STN0">
 90 University
@@ -917,9 +889,7 @@ Portable
 
 </string>
 
-<string name="name_SCR">
-Sacr├â┬®-Coeur
-</string>
+<string name="name_SCR">Eglise Sacré Coeur</string>
 
 <string name="address_SCR0">
 591 Rue Cumberland
@@ -952,6 +922,7 @@ Centrale thermique
 <string name="URL_CTE">
 
 </string>
+    <string name="search_hint">Recherché un édifice</string>
 
 
 </resources>

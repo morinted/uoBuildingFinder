@@ -1,3 +1,5 @@
+// http://maps.uottawa.ca/sites/all/modules/webcms/widgets/uottawa_map/js/buildings.js
+
 var buildings = {
 //------------------------------------------------------------------------------
   240: {
@@ -3800,11 +3802,12 @@ var buildings = {
 //------------------------------------------------------------------------------
 };
 
+
 var english = [], french = [],
     constructors = [], count = 0;
 
 function construct(code, center, polygon, addresses) {
-  var contructor = "";
+  var constructor = "";
   constructor += '\nbuildings.add(new Building(\n';
   constructor += '    R.string.name_' + code + ',\n';
   constructor += '    R.string.code_' + code + ',\n';
@@ -3828,7 +3831,6 @@ function construct(code, center, polygon, addresses) {
   }
   constructor += ')\n));\n';
   count += 1;
-  console.log(constructor);
   return constructor;
 }
 
@@ -3913,5 +3915,10 @@ for (var code in buildings) {
     }
 }
 
-console.log(constructors.length);
-console.log(count);
+var selected = constructors, // english, french, or constructors
+    k = 0,
+    len = selected.length;
+
+for (k; k < len; k += 1) {
+  console.log(selected[k]);
+}
