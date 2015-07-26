@@ -33,7 +33,25 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        handleIntent(getIntent());
         setUpMapIfNeeded();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        setIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            String code = intent.getDataString();
+            Building selectedBuilding = Building.getBuildingByCode(code, getResources());
+        } else {
+            System.out.println("There seems to be something not very viewy going on...");
+            System.out.println(intent.getAction());
+            System.out.println(Intent.ACTION_VIEW);
+        }
     }
 
     @Override
@@ -78,11 +96,23 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
         inflater.inflate(R.menu.maps_activity_actions, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setSubmitButtonEnabled(true);
+        searchView.setSubmitButtonEnabled(false);
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         // Assumes current activity is the searchable activity
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // This is to disable handling of the submit function, we only want suggestions.
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -100,8 +130,10 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mainCampus, 15));
         mMap.setOnMapClickListener(this);
         Building.setupBuildings();
-        Building.attachBuildingsToMap(mMap);
+        // Building.createDatabase(this);
+        Building.attachBuildingsToMap(mMap, getResources());
     }
+
 
 
 

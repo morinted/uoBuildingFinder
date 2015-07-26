@@ -1,6 +1,14 @@
 package in.tedmor.www.uobuildingfinder;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -10,12 +18,14 @@ import com.google.maps.android.PolyUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Ted on 2015-07-21.
  */
 public class Building {
     static List<Building> buildings = new ArrayList<Building>();
+    private static SQLiteDatabase db;
     int name;
     int code;
     int URL;
@@ -34,14 +44,19 @@ public class Building {
         this.path = path;
     }
 
-    public static void attachBuildingsToMap(GoogleMap map) {
+    public static void attachBuildingsToMap(GoogleMap map, Resources resources) {
          for (Building b: buildings) {
-             b.attachToMap(map);
+             b.attachToMap(map, resources);
          }
     }
 
-    public void attachToMap(GoogleMap map) {
-        map.addPolygon(this.path.strokeColor(Color.BLUE).fillColor(Color.WHITE));
+    public static SQLiteDatabase getDb() {
+        return db;
+    }
+
+    public void attachToMap(GoogleMap map, Resources resources) {
+        map.addPolygon(this.path.strokeColor(resources.getColor(R.color.uo_red_dark)).fillColor(Color.WHITE)
+                .strokeWidth(new Float(3)));
     }
 
     public static List<Building> getBuildings() {
@@ -2153,7 +2168,42 @@ public class Building {
         ));
     }
 
-        public static void search(String query) {
-                System.out.println(query);
+    public Object[] toRows(int id, Resources resources) {
+
+        return new Object[]{id, resources.getString(code) + " - " + resources.getString(name),
+                resources.getString(addresses.get(0)), resources.getString(code)};
+    }
+
+    public static List<Building> search(String query, Resources resources) {
+            ArrayList<Building> results = new ArrayList<Building>();
+            query = query.toLowerCase();
+            for (Building b: buildings) {
+                    if (resources.getString(b.code).toLowerCase().contains(query)) {
+                            results.add(b);
+                    } else if (resources.getString(b.name).toLowerCase().contains(query)) {
+                            results.add(b);
+                    } else {
+                            for (Integer address: b.addresses) {
+                                    if (resources.getString(address).toLowerCase().contains(query)) {
+                                            results.add(b);
+                                            break;
+                                    }
+                            }
+                    }
+            }
+
+            return results;
+    }
+
+    public static Building getBuildingByCode(String code, Resources resources) {
+        code = code.toLowerCase();
+        for (Building b: buildings) {
+            if (resources.getString(b.code).toLowerCase().equals(code)) {
+                return b;
+            }
         }
+
+        return null;
+    }
+
 }
