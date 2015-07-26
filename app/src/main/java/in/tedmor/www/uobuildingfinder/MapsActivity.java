@@ -1,8 +1,11 @@
 package in.tedmor.www.uobuildingfinder;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.SearchManager;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -10,18 +13,21 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapClickListener{
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private PopUnderFragment popunder;
+    private Building currentBuilding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +70,7 @@ public class MapsActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
@@ -91,6 +98,7 @@ public class MapsActivity extends AppCompatActivity {
 
         LatLng mainCampus = new LatLng(45.422511, -75.682369);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mainCampus, 15));
+        mMap.setOnMapClickListener(this);
         Building.setupBuildings();
         Building.attachBuildingsToMap(mMap);
     }
@@ -106,5 +114,76 @@ public class MapsActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+//   if a building gets clicked, do something with that
+    @Override
+    public void onMapClick(LatLng point) {
+        Building clickedOn;
+        boolean onBuilding = false;
+        for (int i=0; i < Building.buildings.size(); i++) {
+            if (Building.buildings.get(i).containsPoint(point)) {
+                clickedOn = Building.buildings.get(i);
+                onBuilding = true;
+                addPopUnder(clickedOn);
+                break;
+            }
+        }
+
+        // remove description if the popunder was dismissed
+        if (!onBuilding && popunder != null) {
+            System.out.println("user clicked outside of building");
+            removePopunder();
+        }
+    }
+
+    public void removePopunder() {
+        getFragmentManager().beginTransaction().remove(popunder).commit();
+        popunder = null;
+    }
+
+    public void addPopUnder(Building building) {
+        currentBuilding = building;
+
+        if(this.popunder == null) {
+            popunder = new PopUnderFragment();
+
+        } else {
+            removePopunder();
+            popunder = new PopUnderFragment();
+        }
+
+        ArrayList<String> addrs = new ArrayList<String>();
+
+        for (Integer addr: building.getAddresses()) {
+            addrs.add(getString(addr));
+        }
+
+        // set the info for the popup to display
+        popunder.setBuilding(getString(building.getCode()),
+                getString(building.getName()),
+                addrs,
+                getString(building.getURL()));
+
+        // move the camera focus
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(building.getCenter(), 18));
+
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+
+        ft.add(R.id.rLayout, popunder);
+
+        ft.commit();
+    }
+
+    public void getDirections(View view) {
+        System.out.println("getting directions");
+
+        LatLng point = currentBuilding.getCenter();
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("https://maps.google.com/maps?" +
+                        "&daddr=" + point.latitude + "," + point.longitude + "&mode=walking"));
+        startActivity(intent);
     }
 }

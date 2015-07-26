@@ -5,6 +5,7 @@ import android.graphics.Color;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.maps.android.PolyUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,7 +72,11 @@ public class Building {
         return center;
     }
 
-    public static void setupBuildings() {
+        public boolean containsPoint(LatLng point) {
+                return PolyUtil.containsLocation(point, this.path.getPoints(), false);
+        }
+
+        public static void setupBuildings() {
         buildings.add(new Building(
                 R.string.name_3,
                 R.string.code_3,
