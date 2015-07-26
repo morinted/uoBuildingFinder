@@ -46,7 +46,7 @@ public class Building {
 
     public static void attachBuildingsToMap(GoogleMap map, Resources resources) {
          for (Building b: buildings) {
-             b.attachToMap(map, resources);
+             b.attachToMap(map,resources);
          }
     }
 
@@ -895,7 +895,6 @@ public class Building {
                         new LatLng(45.42080777956315, -75.68101778626442),
                         new LatLng(45.42053573922645, -75.68170174956322),
                         new LatLng(45.42073953427316, -75.68186938762665),
-                        new LatLng(45.421194187546, -75.68073078989983),
                         new LatLng(45.421201718004156, -75.68073749542236),
                         new LatLng(45.421077465315946, -75.68063758313656),
                         new LatLng(45.42104546079137, -75.68070329725742))
