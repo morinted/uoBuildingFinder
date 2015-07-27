@@ -14,6 +14,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,6 +37,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     private PopUnderFragment popunder;
     private Polygon highlight;
     private Building currentBuilding;
+    private Boolean restorePopunder = false;
     private SearchView searchView;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -59,7 +61,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
         setContentView(R.layout.activity_maps);
         loadSettings();
         handleIntent(getIntent());
-        System.out.println("settings: " + defaultCampus);
+
         setUpMapIfNeeded();
 
         sideMenuList = getResources().getStringArray(R.array.side_menu_array);
@@ -68,6 +70,27 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
 
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, sideMenuList));
         mDrawerList.setOnItemClickListener(this);
+        if (savedInstanceState != null) {
+            restorePopunder = savedInstanceState.getBoolean("restorePopunder");
+            if (restorePopunder) {
+                currentBuilding =
+                        Building.getBuildingByCode(
+                                savedInstanceState.getString("currentBuilding"),
+                                getResources()
+                        );
+                restorePopunder = false;
+                addPopUnder(currentBuilding);
+            }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (popunder != null) {
+            removePopunder();
+            restorePopunder = true;
+        }
+        super.onPause();
     }
 
     @Override
@@ -87,9 +110,21 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("restorePopunder", restorePopunder);
+        outState.putString("currentBuilding",
+                getResources().getString(currentBuilding.getCode()));
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+        System.out.println("Resuming");
+        System.out.println(restorePopunder);
+        System.out.println(currentBuilding);
         setUpMapIfNeeded();
+
     }
 
     /**
@@ -256,19 +291,14 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     }
 
     public void addPopUnder(Building building) {
+        System.out.println("Building is being added to pop under");
         if (popunder != null) {
             removePopunder();
         }
         highlight = building.highlightOnMap(mMap, getResources());
         currentBuilding = building;
 
-        if(this.popunder == null) {
-            popunder = new PopUnderFragment();
-
-        } else {
-            removePopunder();
-            popunder = new PopUnderFragment();
-        }
+        popunder = new PopUnderFragment();
 
         ArrayList<String> addrs = new ArrayList<String>();
 
@@ -294,6 +324,15 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
         ft.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (popunder != null) {
+            removePopunder();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public void getDirections(View view) {
         System.out.println("getting directions");
 
@@ -301,6 +340,13 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
         Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
                 Uri.parse("https://maps.google.com/maps?" +
                         "&daddr=" + point.latitude + "," + point.longitude + "&mode=walking"));
+        startActivity(intent);
+    }
+
+    public void openUrl(View view) {
+        String URL = getResources().getString(currentBuilding.getURL());
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse(URL));
         startActivity(intent);
     }
 

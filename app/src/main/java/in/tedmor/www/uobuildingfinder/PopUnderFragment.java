@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -56,6 +57,7 @@ public class PopUnderFragment extends Fragment {
 
 
         View v = inflater.inflate(R.layout.fragment_pop_under, container, false);
+        ImageButton site = (ImageButton) v.findViewById(R.id.website);
         // add click listener to dismiss if clicked outside the box
         TextView title = (TextView)v.findViewById(R.id.popUnderTitle);
         title.setText(buildingCode + " - " + buildingName);
@@ -64,8 +66,14 @@ public class PopUnderFragment extends Fragment {
 
         String addrText = new String();
 
-        for(String addr: this.buildingAddresses) {
+        for (String addr: this.buildingAddresses) {
             addrText = addrText + addr + "\n";
+        }
+
+        if (url == null || url.length() == 0) {
+            site.setVisibility(View.GONE);
+        } else {
+            site.setVisibility(View.VISIBLE);
         }
 
         addrView.setText(addrText);
@@ -73,6 +81,10 @@ public class PopUnderFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 
     public void setBuilding(String code, String name, List<String> addrs, String url) {
         this.buildingCode = code;

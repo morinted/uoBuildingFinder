@@ -1500,7 +1500,6 @@ var buildings = {
       {lat: 45.42080777956315, lng: -75.68101778626442},
       {lat: 45.42053573922645, lng: -75.68170174956322}, 
       {lat: 45.42073953427316, lng: -75.68186938762665},   
-      {lat: 45.421194187546, lng: -75.68073078989983},
       {lat: 45.421201718004156, lng: -75.68073749542236},   
       {lat: 45.421077465315946, lng: -75.68063758313656}, 
       {lat: 45.42104546079137, lng: -75.68070329725742}
@@ -3818,7 +3817,7 @@ function construct(code, center, polygon, addresses) {
     constructor += ',\n        R.string.address_' + code + i
   }
   constructor += '),\n';
-  constructor += '    R.string.code_' + code + ',\n';
+  constructor += '    R.string.URL_' + code + ',\n';
   constructor += '    new LatLng(' + center.lat + ', ' + center.lng + '),\n'
   constructor += '    new PolygonOptions().add(\n' +
       '        new LatLng(' + polygon[0].lat + ', ' +
