@@ -155,6 +155,8 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
             removePopunder();
             restorePopunder = true;
         }
+        searchView.setIconified(true);
+        searchView.setIconified(true);
         super.onPause();
     }
 
@@ -166,11 +168,13 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
-            searchView.setIconified(true);
-            searchView.setIconified(true);
-            String code = intent.getDataString();
-            Building selectedBuilding = Building.getBuildingByCode(code, getResources());
-            addPopUnder(selectedBuilding);
+            if (searchView != null) {
+                searchView.setIconified(true);
+                searchView.setIconified(true);
+                String code = intent.getDataString();
+                Building selectedBuilding = Building.getBuildingByCode(code, getResources());
+                addPopUnder(selectedBuilding);
+            }
         }
     }
 

@@ -5,10 +5,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -64,10 +66,10 @@ public class PopUnderFragment extends Fragment {
 
         TextView addrView = (TextView)v.findViewById(R.id.popUnderAddress);
 
-        String addrText = new String();
+        String addrText = this.buildingAddresses.size() > 0 ? this.buildingAddresses.get(0) : "";
 
-        for (String addr: this.buildingAddresses) {
-            addrText = addrText + addr + "\n";
+        for (int i = 1; i < this.buildingAddresses.size(); i += 1) {
+            addrText += System.getProperty("line.separator") + this.buildingAddresses.get(i);
         }
 
         if (url == null || url.length() == 0) {
@@ -77,6 +79,15 @@ public class PopUnderFragment extends Fragment {
         }
 
         addrView.setText(addrText);
+
+        RelativeLayout layout = (RelativeLayout) v.findViewById(R.id.popUnder);
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Do nothing.
+                return;
+            }
+        });
 
         return v;
     }
