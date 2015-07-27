@@ -3,13 +3,19 @@
     <string name="title_activity_maps">uoBuilding Finder</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Search buildings</string>
+    <string name="website">Building Webpage</string>
+    <string name="directions">Get Directions</string>
+    <string name="select_campus">Select campus...</string>
+    <string name="drawer_open">Drawer open</string>
+    <string name="drawer_close">Drawer open</string>
     <string translatable="false" name="code_3">
 3
 </string>
 
+
 <string-array name="side_menu_array">
-    <item>Select Campus</item>
-    <item>Settings</item>
+    <item>@string/select_campus</item>
+    <item>@string/action_settings</item>
 </string-array>
 
 

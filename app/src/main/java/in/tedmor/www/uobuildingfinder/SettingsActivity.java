@@ -47,7 +47,12 @@ public class SettingsActivity extends PreferenceActivity{
             setupActionBar();
         }
 
-        /**
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    /**
          * Set up the {@link android.app.ActionBar}, if the API is available.
          */
         @TargetApi(Build.VERSION_CODES.HONEYCOMB)

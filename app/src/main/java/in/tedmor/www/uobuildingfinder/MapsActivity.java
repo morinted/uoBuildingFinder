@@ -7,11 +7,13 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.KeyEvent;
@@ -39,20 +41,26 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     private Building currentBuilding;
     private Boolean restorePopunder = false;
     private SearchView searchView;
-    private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
     private String[] sideMenuList;
+    private CharSequence mTitle;
     private final LatLng mainCampus = new LatLng(45.422511, -75.682369);
     private final LatLng rgCampus = new LatLng(45.40278910087822, -75.6459586322307);
     private final LatLng lCampus = new LatLng(45.41599651987494,  -75.6670676171779);
     private final LatLng EMBACampus = new LatLng(45.421326441071535, -75.69806858897209);
     private String defaultCampus;
+    private Boolean locationEnabled;
 
 
     public void loadSettings() {
             defaultCampus = PreferenceManager
                     .getDefaultSharedPreferences(this)
                     .getString("CAMPUS", "Main");
+            locationEnabled = PreferenceManager
+                .getDefaultSharedPreferences(this)
+                .getBoolean("LOC", true);
     }
 
     @Override
@@ -66,10 +74,48 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
 
         sideMenuList = getResources().getStringArray(R.array.side_menu_array);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView)findViewById(R.id.left_drawer);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, sideMenuList));
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[2];
+
+        drawerItem[0] = new ObjectDrawerItem(R.drawable.ic_action_map,
+                getResources().getString(R.string.select_campus));
+        drawerItem[1] = new ObjectDrawerItem(R.drawable.ic_action_settings,
+                getResources().getString(R.string.action_settings));
+
+        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.listview_item_row, drawerItem);
+        mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(this);
+
+        mTitle = getTitle();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+                R.string.drawer_open,  /* "open drawer" description */
+                R.string.drawer_close  /* "close drawer" description */
+        ) {
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getSupportActionBar().setTitle(mTitle);
+            }
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getSupportActionBar().setTitle(mTitle);
+            }
+        };
+
+        // Set the drawer toggle as the DrawerListener
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+
         if (savedInstanceState != null) {
             restorePopunder = savedInstanceState.getBoolean("restorePopunder");
             if (restorePopunder) {
@@ -79,10 +125,28 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
                                 getResources()
                         );
                 restorePopunder = false;
+
                 addPopUnder(currentBuilding);
             }
         }
+
+
     }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
 
     @Override
     protected void onPause() {
@@ -112,19 +176,22 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putBoolean("restorePopunder", restorePopunder);
-        outState.putString("currentBuilding",
-                getResources().getString(currentBuilding.getCode()));
+        if (restorePopunder) {
+            outState.putString("currentBuilding",
+                    getResources().getString(currentBuilding.getCode()));
+        }
         super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("Resuming");
-        System.out.println(restorePopunder);
-        System.out.println(currentBuilding);
         setUpMapIfNeeded();
-
+        if (currentBuilding != null) {
+            addPopUnder(currentBuilding);
+        }
+        loadSettings();
+        mMap.setMyLocationEnabled(locationEnabled);
     }
 
     /**
@@ -191,7 +258,8 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
-        mMap.setMyLocationEnabled(true);
+        mMap.setMyLocationEnabled(locationEnabled);
+
 
         LatLng point = mainCampus;
         int zoom = 15;
@@ -254,6 +322,10 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
+        if (mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+
         switch (item.getItemId()) {
             case R.id.action_search:
                 return true;

@@ -3,7 +3,10 @@
     <string name="app_name">CarteUO</string>
     <string name="title_activity_maps">CarteUO</string>
     <string name="action_search">Recherche</string>
-
+    <string name="website">Site-web</string>
+    <string name="directions">Directions</string>
+    <string name="select_campus">Changer campus...</string>
+    <string name="action_settings">Options</string>
 
     <string name="name_3">
 52 University

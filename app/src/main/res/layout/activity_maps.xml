@@ -21,12 +21,14 @@ android:layout_height="match_parent">
     </RelativeLayout>
 
 <!-- The navigation drawer -->
-<ListView android:id="@+id/left_drawer"
-    android:layout_width="240dp"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    android:choiceMode="singleChoice"
-    android:divider="@color/uo_red"
-    android:dividerHeight="2dp"
-    android:background="@color/uo_red_night"/>
+        <!-- Use any Views you like -->
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="240dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:choiceMode="singleChoice"
+            android:divider="@color/background_floating_material_dark"
+            android:dividerHeight="1dp"
+            android:background="@color/background_material_dark"/>
 </android.support.v4.widget.DrawerLayout>

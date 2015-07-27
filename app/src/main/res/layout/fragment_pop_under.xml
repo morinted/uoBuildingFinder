@@ -59,6 +59,7 @@
             android:id="@+id/button"
             android:src="@drawable/ic_action_directions_walk"
             android:onClick="getDirections"
+            android:contentDescription="@string/directions"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:longClickable="false"
@@ -72,6 +73,7 @@
             android:src="@drawable/ic_action_public"
             android:onClick="openUrl"
             android:longClickable="false"
+            android:contentDescription="@string/website"
             android:layout_alignParentBottom="true"
             android:layout_toStartOf="@+id/button"
             android:backgroundTintMode="src_over" />

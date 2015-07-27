@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="switch_campus_title" type="id">Switch Campus</item>
+    <item name="switch_campus_title" type="id">Changer Campus...</item>
 </resources>
