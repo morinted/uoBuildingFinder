@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- These settings headers are only used on tablets. -->
+
+    <header android:fragment="in.tedmor.www.uobuildingfinder.SettingsActivity$GeneralPreferenceFragment"
+        android:title="General" />
+</PreferenceScreen>

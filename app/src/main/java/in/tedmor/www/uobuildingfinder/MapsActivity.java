@@ -1,19 +1,26 @@
 package in.tedmor.www.uobuildingfinder;
 
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,22 +29,45 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Polygon;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapClickListener{
+public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapClickListener, ListView.OnItemClickListener{
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private PopUnderFragment popunder;
     private Polygon highlight;
     private Building currentBuilding;
     private SearchView searchView;
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+    private String[] sideMenuList;
+    private final LatLng mainCampus = new LatLng(45.422511, -75.682369);
+    private final LatLng rgCampus = new LatLng(45.40278910087822, -75.6459586322307);
+    private final LatLng lCampus = new LatLng(45.41599651987494,  -75.6670676171779);
+    private final LatLng EMBACampus = new LatLng(45.421326441071535, -75.69806858897209);
+    private String defaultCampus;
+
+
+    public void loadSettings() {
+            defaultCampus = PreferenceManager
+                    .getDefaultSharedPreferences(this)
+                    .getString("CAMPUS", "Main");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        loadSettings();
         handleIntent(getIntent());
+        System.out.println("settings: " + defaultCampus);
         setUpMapIfNeeded();
+
+        sideMenuList = getResources().getStringArray(R.array.side_menu_array);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView)findViewById(R.id.left_drawer);
+
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, sideMenuList));
+        mDrawerList.setOnItemClickListener(this);
     }
 
     @Override
@@ -128,13 +158,61 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     private void setUpMap() {
         mMap.setMyLocationEnabled(true);
 
-        LatLng mainCampus = new LatLng(45.422511, -75.682369);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mainCampus, 15));
+        LatLng point = mainCampus;
+        int zoom = 15;
+
+        if(defaultCampus.equals("Main")) {
+            point = mainCampus;
+            zoom = 15;
+        } else if (defaultCampus.equals("Roger Guindon")) {
+            point = this.rgCampus;
+            zoom = 15;
+        } else if (defaultCampus.equals("Executive MBA")) {
+            point = this.EMBACampus;
+            zoom = 17;
+        } else if (defaultCampus.equals("Lees")) {
+            point = this.lCampus;
+            zoom = 17;
+        }
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, zoom));
         mMap.setOnMapClickListener(this);
         Building.setupBuildings();
         Building.attachBuildingsToMap(mMap, getResources());
     }
 
+    public void switchCampus() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        CharSequence[] campuses = new CharSequence[] {"Main", "Lees", "Roger Guindon", "Executive MBA"};
+
+        builder.setTitle(R.id.switch_campus_title);
+        builder.setItems(campuses, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                moveToCampus(which);
+            }
+        });
+        builder.show();
+    }
+
+    // 0=main, 1=lees, 2=RGN, 3=EMBA
+    private void moveToCampus(int campus) {
+        switch (campus) {
+            case 0:
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mainCampus, 15));
+                break;
+            case 1:
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lCampus, 17));
+                break;
+            case 2:
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(rgCampus, 15));
+                break;
+            case 3:
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(EMBACampus, 17));
+                break;
+        }
+    }
 
 
 
@@ -226,7 +304,25 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
         startActivity(intent);
     }
 
-    public void removePopunder(View view) {
-        removePopunder();
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        System.out.println("list item was clicked");
+        switch ((int)id) {
+            case 0:
+                switchCampus();
+                mDrawerLayout.closeDrawers();
+                break;
+            case 1:
+                System.out.println("open settings");
+                openSettings();
+                mDrawerLayout.closeDrawers();
+                break;
+        }
+    }
+
+    public void openSettings() {
+        Intent i = new Intent(this, SettingsActivity.class);
+        startActivity(i);
+        return;
     }
 }
