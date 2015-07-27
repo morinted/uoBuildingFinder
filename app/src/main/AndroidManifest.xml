@@ -43,7 +43,14 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MapsActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="in.tedmor.www.uobuildingfinder.MapsActivity" />
+        </activity>
         <provider
             android:name=".BuildingProvider"
             android:authorities="in.tedmor.www.BuildingProvider"

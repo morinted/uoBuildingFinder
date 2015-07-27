@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="campuses">
+        <item>Main</item>
+        <item>Lees</item>
+        <item>Roger Guindon</item>
+        <item>Executive MBA</item>
+    </string-array>
+    <string-array name="campuses_values">
+        <item>Main</item>
+        <item>Roger Guindon</item>
+        <item>Executive MBA</item>
+        <item>Lees</item>
+    </string-array>
+</resources>

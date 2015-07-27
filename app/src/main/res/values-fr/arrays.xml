@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="campuses">
+        <item>Principal</item>
+        <item>Roger Guindon</item>
+        <item>MBA pour cadres</item>
+        <item>Lees</item>
+    </string-array>
+    <string-array name="campuses_values" />
+</resources>

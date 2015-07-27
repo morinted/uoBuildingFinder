@@ -1,0 +1,8 @@
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text="Medium Text"
+    android:id="@+id/list_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:textColor="@drawable/side_menu_selector" />
