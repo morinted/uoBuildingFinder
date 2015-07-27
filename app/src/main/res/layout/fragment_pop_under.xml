@@ -10,10 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_gravity="center_horizontal|bottom"
-        android:background="#FFFFFF"
+        android:background="@color/uo_red"
         android:id="@+id/popUnder"
         android:columnCount="8"
-        android:rowCount="3">
+        android:rowCount="3"
+        android:padding="@dimen/abc_action_bar_default_padding_material">
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,21 +45,36 @@
             android:id="@+id/closePopUnder"
             android:layout_row="0"
             android:layout_column="3"
+            android:onClick="removePopunder"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:background="@android:color/transparent"
             android:layout_gravity="top"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true" />
 
-        <Button
+        <ImageButton
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Directions"
             android:id="@+id/button"
+            android:src="@drawable/ic_action_directions_walk"
             android:onClick="getDirections"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:longClickable="false"
+            android:backgroundTintMode="src_over" />
+
+        <ImageButton
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton"
+            android:src="@drawable/ic_action_public"
+            android:onClick="getDirections"
+            android:longClickable="false"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/button"
+            android:backgroundTintMode="src_over" />
 
     </RelativeLayout>
 

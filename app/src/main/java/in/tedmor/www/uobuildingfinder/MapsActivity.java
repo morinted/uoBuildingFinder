@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polygon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,9 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private PopUnderFragment popunder;
+    private Polygon highlight;
     private Building currentBuilding;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,11 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
 
     private void handleIntent(Intent intent) {
         if (Intent.ACTION_VIEW.equals(intent.getAction())) {
+            searchView.setIconified(true);
+            searchView.setIconified(true);
             String code = intent.getDataString();
             Building selectedBuilding = Building.getBuildingByCode(code, getResources());
-        } else {
-            System.out.println("There seems to be something not very viewy going on...");
-            System.out.println(intent.getAction());
-            System.out.println(Intent.ACTION_VIEW);
+            addPopUnder(selectedBuilding);
         }
     }
 
@@ -95,7 +97,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.maps_activity_actions, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setSubmitButtonEnabled(false);
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -130,7 +132,6 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mainCampus, 15));
         mMap.setOnMapClickListener(this);
         Building.setupBuildings();
-        // Building.createDatabase(this);
         Building.attachBuildingsToMap(mMap, getResources());
     }
 
@@ -157,6 +158,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
             if (Building.buildings.get(i).containsPoint(point)) {
                 clickedOn = Building.buildings.get(i);
                 onBuilding = true;
+
                 addPopUnder(clickedOn);
                 break;
             }
@@ -171,10 +173,15 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
 
     public void removePopunder() {
         getFragmentManager().beginTransaction().remove(popunder).commit();
+        highlight.remove();
         popunder = null;
     }
 
     public void addPopUnder(Building building) {
+        if (popunder != null) {
+            removePopunder();
+        }
+        highlight = building.highlightOnMap(mMap, getResources());
         currentBuilding = building;
 
         if(this.popunder == null) {
@@ -198,7 +205,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
                 getString(building.getURL()));
 
         // move the camera focus
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(building.getCenter(), 18));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(building.getCenter(), 18), 500, null);
 
 
         FragmentManager fm = getFragmentManager();
@@ -217,5 +224,9 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
                 Uri.parse("https://maps.google.com/maps?" +
                         "&daddr=" + point.latitude + "," + point.longitude + "&mode=walking"));
         startActivity(intent);
+    }
+
+    public void removePopunder(View view) {
+        removePopunder();
     }
 }

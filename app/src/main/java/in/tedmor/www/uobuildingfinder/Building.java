@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.maps.android.PolyUtil;
 
@@ -56,6 +57,12 @@ public class Building {
 
     public void attachToMap(GoogleMap map, Resources resources) {
         map.addPolygon(this.path.strokeColor(resources.getColor(R.color.uo_red_dark)).fillColor(Color.WHITE)
+                .strokeWidth(new Float(3)));
+    }
+
+    public Polygon highlightOnMap(GoogleMap map, Resources resources) {
+         return map.addPolygon(this.path.strokeColor(resources.getColor(R.color.uo_red_dark))
+                .fillColor(resources.getColor(R.color.uo_red_dark))
                 .strokeWidth(new Float(3)));
     }
 

@@ -2,4 +2,5 @@
 <resources>
     <color name="uo_red">#8F001A</color>
     <color name="uo_red_dark">#6D0013</color>
+    <color name="uo_red_night">#550000</color>
 </resources>
