@@ -3,5 +3,5 @@
     <!-- These settings headers are only used on tablets. -->
 
     <header android:fragment="in.tedmor.www.uobuildingfinder.SettingsActivity$GeneralPreferenceFragment"
-        android:title="General" />
+        android:title="@string/general" />
 </PreferenceScreen>

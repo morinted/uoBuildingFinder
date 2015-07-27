@@ -7,7 +7,11 @@
     <string name="directions">Directions</string>
     <string name="select_campus">Changer campus...</string>
     <string name="action_settings">Options</string>
-
+    <string name="campus_main">Principal</string>
+    <string name="campus_lees">Lees</string>
+    <string name="campus_rg">Roger Guindon</string>
+    <string name="campus_mba">MBA pour cadres</string>
+    <string name="general">Général</string>
     <string name="name_3">
 52 University
 </string>
@@ -927,5 +931,9 @@ Centrale thermique
 </string>
     <string name="search_hint">Recherché un édifice</string>
 
-
+    <string name="pref_title_campus">Campus défaut</string>
+    <string name="main_campus">@string/campus_main</string>
+    <string name="title_activity_settings">Options</string>
+    <string name="pref_title_location">Permettre accès géolocalisé</string>
+    <string name="settings_title">Options</string>
 </resources>

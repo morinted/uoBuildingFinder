@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -285,9 +286,12 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
     }
 
     public void switchCampus() {
+        Resources r = getResources();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        CharSequence[] campuses = new CharSequence[] {"Main", "Lees", "Roger Guindon", "Executive MBA"};
+        CharSequence[] campuses = new CharSequence[] {r.getString(R.string.campus_main),
+                r.getString(R.string.campus_lees), r.getString(R.string.campus_rg),
+                r.getString(R.string.campus_mba)};
 
         builder.setTitle(R.id.switch_campus_title);
         builder.setItems(campuses, new DialogInterface.OnClickListener() {
@@ -354,6 +358,9 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
             System.out.println("user clicked outside of building");
             removePopunder();
         }
+    }
+    public void removePopunder(View view) {
+        removePopunder();
     }
 
     public void removePopunder() {
