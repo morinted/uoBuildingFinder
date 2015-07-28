@@ -101,6 +101,9 @@ public class Building {
         }
 
         public static void setupBuildings() {
+            if (buildings.size() != 0) {
+                 return;
+            }
             buildings.add(new Building(
                     R.string.name_3,
                     R.string.code_3,

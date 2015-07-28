@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -59,7 +60,25 @@ public class PopUnderFragment extends Fragment {
 
 
         View v = inflater.inflate(R.layout.fragment_pop_under, container, false);
+        ImageButton directions = (ImageButton) v.findViewById(R.id.directions);
         ImageButton site = (ImageButton) v.findViewById(R.id.website);
+        site.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(v.getContext(), getResources().getString(R.string.website),
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+        directions.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(v.getContext(), getResources().getString(R.string.directions),
+                        Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
         // add click listener to dismiss if clicked outside the box
         TextView title = (TextView)v.findViewById(R.id.popUnderTitle);
         title.setText(buildingCode + " - " + buildingName);

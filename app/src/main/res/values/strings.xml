@@ -13,6 +13,8 @@
     <string name="campus_rg">Roger Guindon</string>
     <string name="campus_mba">Executive MBA</string>
     <string name="general">General</string>
+    <string name="no_results">No results</string>
+    <string name="try_again">Please try another query</string>
 
 
     <string translatable="false" name="code_3">

@@ -38,6 +38,7 @@
         <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/website"
             android:layout_row="1"
             android:layout_column="0"
             android:layout_below="@+id/closePopUnder"
@@ -47,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="16 example rd"
+                android:text="134 A Really Long Address Line West Ward Way"
                 android:id="@+id/popUnderAddress"
                 />
         </ScrollView>
@@ -69,13 +70,14 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
-            android:src="@drawable/ic_action_directions_walk"
+            android:id="@+id/directions"
+            android:src="@drawable/ic_action_directions"
             android:onClick="getDirections"
             android:contentDescription="@string/directions"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:longClickable="false"
+            android:longClickable="true"
+            android:scaleType="fitCenter"
             android:backgroundTintMode="src_over" />
 
         <ImageButton
@@ -85,10 +87,11 @@
             android:id="@+id/website"
             android:src="@drawable/ic_action_public"
             android:onClick="openUrl"
-            android:longClickable="false"
+            android:longClickable="true"
+            android:scaleType="fitCenter"
             android:contentDescription="@string/website"
             android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/button"
+            android:layout_toStartOf="@+id/directions"
             android:backgroundTintMode="src_over" />
 
     </RelativeLayout>

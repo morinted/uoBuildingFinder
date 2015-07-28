@@ -61,6 +61,13 @@ public class BuildingProvider extends ContentProvider {
                 results.addRow(b.toRows(id, getContext().getResources()));
                 id += 1;
             }
+            if (results.getCount() == 0) {
+                Object[] noResults = {null,
+                        getContext().getResources().getString(R.string.no_results),
+                        getContext().getResources().getString(R.string.try_again),
+                        null};
+                results.addRow(noResults);
+            }
             results.moveToFirst();
             return results;
         }

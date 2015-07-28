@@ -172,8 +172,10 @@ public class MapsActivity extends AppCompatActivity implements GoogleMap.OnMapCl
                 searchView.setIconified(true);
                 searchView.setIconified(true);
                 String code = intent.getDataString();
-                Building selectedBuilding = Building.getBuildingByCode(code, getResources());
-                addPopUnder(selectedBuilding);
+                if (code != null) {
+                    Building selectedBuilding = Building.getBuildingByCode(code, getResources());
+                    addPopUnder(selectedBuilding);
+                }
             }
         }
     }
